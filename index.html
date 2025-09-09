@@ -3,8 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting…</title>
+    <!-- meta refresh redirect -->
     <meta http-equiv="refresh" content="0; url=Coverpage/">
     <link rel="canonical" href="Coverpage/">
+    <script>
+      // JS fallback redirect (more robust)
+      window.location.replace("Coverpage/");
+    </script>
   </head>
   <body>
     <p>If you’re not redirected, <a href="Coverpage/">click here</a>.</p>

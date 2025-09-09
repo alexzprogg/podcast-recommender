@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/form_display.css">
+        <link rel="stylesheet" href="static/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>   
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>   
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+            rel="stylesheet" type="text/css" />   
+    </head>
+    <body>
+        <div class="button-container">
+            <a href="http://127.0.0.1:5000" class="home-button">Home</a>
+            <form action="/previous_inputs" method="POST">
+                <div class="home-button">
+                    <input type="submit" value="Previous Inputs"/>
+                </div>
+            </form>
+        </div>
+        <hr>
+        
+        <div class="login-box">
+            <h2>Give me your keywords</h2>
+            <form action="/input_validation" method = "POST">
+                <div class="user-box">
+                    <input type = "text" name = "Input1" id="tags1"/>
+                    <label>Input1</label>
+                </div>
+                <div class="user-box">
+                    <input type = "text" name = "Input2" id="tags2"/>
+                    <label>Input2</label>
+                </div>
+                <div class="user-box">
+                    <input type = "text" name = "Input3" id="tags3"/>
+                    <label>Input3</label>
+                </div>
+                <div class="home-button">
+                    <input type = "submit" value = "Submit"/>
+                </div>
+            </form>    
+        </div>
+
+        <div class="flash">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    {{ message}}
+                {% endfor %}
+            {% endwith %}
+        </div>
+    
+        <script> 
+            $( function() { 
+              var availableTags1 = [ 
+                  {% for input_record in input_records %}
+                      "{{input_record}}", 
+                  {% endfor %} 
+              ]; 
+              $( "#tags1" ).autocomplete({ 
+                source: availableTags1 
+              }); 
+            } ); 
+
+            $( function() { 
+              var availableTags2 = [ 
+                  {% for input_record in input_records %}
+                      "{{input_record}}", 
+                  {% endfor %} 
+              ]; 
+              $( "#tags2" ).autocomplete({ 
+                source: availableTags2 
+              }); 
+            } ); 
+
+            $( function() { 
+              var availableTags3 = [ 
+                  {% for input_record in input_records %}
+                      "{{input_record}}", 
+                  {% endfor %}                                                                                                                     
+              ]; 
+              $( "#tags3" ).autocomplete({ 
+                source: availableTags3 
+              }); 
+            } ); 
+        </script> 
+
+    </body>
+</html>
+
+
+

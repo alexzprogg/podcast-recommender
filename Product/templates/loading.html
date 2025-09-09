@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="static/loading.css">
+
+    <link rel="stylesheet" href="static/main.css">
+    <script>
+        function navigate() {
+            window.location.href = 'result';  // Redirects user to the /map route when 'create_map' is finished
+        }
+        fetch('backend').then(navigate); // Performing 'backend' and then calls navigate() function, declared above
+    </script>
+</head>
+
+<body>
+    <div class="sk-wander center">
+        <div class="sk-wander-cube"></div>
+        <div class="sk-wander-cube"></div>
+        <div class="sk-wander-cube"></div>
+        <div class="sk-wander-cube"></div>
+    </div>
+</body>

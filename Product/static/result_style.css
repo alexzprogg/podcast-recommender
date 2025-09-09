@@ -1,0 +1,55 @@
+.container {
+    display: flex; /*align items horizontally*/
+}
+
+.iframe-container {
+    position: relative;
+    margin-bottom: 30px;
+    top: 50px
+}
+.wordcloud{
+
+    position: relative;
+    margin-left: -1605px;
+    margin-top: 250px;
+}
+ul.flash {
+    margin-right: 150px;
+    padding: 20px;
+    font-size: 16px; 
+    border: 2px solid #0074D9; 
+    background-color: #E5E7E9; 
+    color: #333; 
+    list-style-type: disc; /* Change the list style */
+    text-align: left;
+    width: 600px;
+    position: relative; 
+    top: 30px; 
+    left: 100px; 
+    border-radius: 5px; 
+    height: 140px;
+}
+
+ul.flash li {
+    margin-bottom: 10px; /* Add space between list items */
+    font-weight: 400; 
+}
+
+.results {
+    margin-top: 300px;
+    text-align: center;
+    margin-right: 10%;
+}
+.results p, .results a {
+    color:azure;
+    font-weight: 550;
+    font-size: 35px;
+}
+.results a {
+    color: hsl(206, 28%, 48%); /* Adjust the color as needed */
+    text-decoration: darkcyan;
+}
+.results a:hover {
+    color: skyblue;
+    text-decoration: underline;
+}

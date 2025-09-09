@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Previous Inputs</title>
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/main.css">
+  <link rel="stylesheet" href="static/button.css">
+</head>
+<body>
+  <a href="http://127.0.0.1:5000" class="home-button">Home</a>
+  <div>
+    <h1>Previous Inputs</h1>
+    <hr>
+    <div class="database_vis">
+        <div id="database"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  <script>
+    const userData = {{ keywords | tojson | safe }};
+    new gridjs.Grid({
+      columns: [
+        { id: 'user_input', name: 'User Input' },
+        { id: 'keywords', name: 'Keywords' },
+      ],
+      data: userData,
+      search: {
+        selector: (cell, rowIndex, cellIndex) => [0, 1].includes(cellIndex) ? cell : null,
+      },
+      sort: true,
+      pagination: true,
+    }).render(document.getElementById('database'));
+
+    // Function to perform a POST request when Enter key is pressed
+    function getUserInputOnSearch() {
+      var user_query = document.querySelector('.gridjs-search-input');
+      var user_query = user_query.value;
+      
+      function navigate() {
+            window.location.href = 'word_cloud';  // Redirects user to the /map route when 'create_map' is finished
+        }
+        // Send the user input to the server via a POST request
+        fetch('/query_user_input', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_query: user_query }),
+        }).then(navigate);
+    }
+    const searchInput = document.getElementById('searchInput');
+
+    const searchButton_1 = document.querySelector('.gridjs-search-input');
+
+    searchButton_1.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        getUserInputOnSearch();
+      }
+    });
+
+    searchInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        getUserInputOnSearch();
+      }
+    });
+  </script>
+</body>
+</html>
+

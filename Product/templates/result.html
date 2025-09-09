@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/result_style.css">
+        <link rel="stylesheet" href="static/main.css">
+        <link rel="stylesheet" href="static/word_cloud.css">
+    </head>
+    <body>
+        <a href="http://127.0.0.1:5000" class="home-button">Home</a>
+        <div>
+            <h1>Podcast Recommendation</h1>
+            <hr>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="container"> <!-- wrap both the ul and div class inside another class so that they horizontally align -->
+                    <ul class="flash"> <!-- flash class displaying relevance, inputs, etc.-->
+                        {% for message in messages %}
+                            <li>
+                                {% if bool[loop.index0] == 2 %} <!--represents the zero-based index of the current iteration -->
+                                    Relevance of input: {{ message }}
+                                {% elif bool[loop.index0] == 1 %}
+                                    Recommended Keyword: {{message}}
+                                {% else %}
+                                    {{message}}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="results">
+                        <p>Click the link below to view search results:</p>
+                        <a href="{{ search_url }}" target="_blank">View Search Results on Google Podcast</a>
+                    </div>
+                    <!-- <div class="iframe-container"> div class for embedded frame 
+                        <iframe src="{{ search_url }}" title="Google Podcast" style = "width: 200%; height: 700px;"></iframe>
+                    </div> -->
+                    <div class="wordcloud">
+                        <iframe src="{{ word_cloud_url }}" title="wordcloud" style = "width: 210%; height: 500px;" scrolling="yes"></iframe>
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </body>
+</html>

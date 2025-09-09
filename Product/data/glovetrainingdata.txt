@@ -1,0 +1,6 @@
+https://nlp.stanford.edu/projects/glove/
+
+
+download: glove.6B.300d 
+
+copy to data folder 

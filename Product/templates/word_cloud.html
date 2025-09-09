@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/word_cloud.css">
+        <link rel="stylesheet" href="static/main.css">
+    </head>
+    <body>
+        {% if route == 1 %}
+            {% with message = get_flashed_messages() %}
+                <a href="http://127.0.0.1:5000" class="home-button">Home</a>
+                <h1>Search Query</h1>
+                <hr>
+                <div class="searchQuery">
+                    Displayed Keywords for: {{ message }}
+                </div>
+            {% endwith %}
+        {% endif %}
+        <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+        <span class="contents"></span>
+        <script>
+            const myTags = JSON.parse('{{ keywordsForCloud | tojson | safe }}');
+            var tagCloud = TagCloud('.contents', myTags, {
+                radius: 270,
+                // animation speed
+                maxSpeed: "fast",
+                initSpeed: "fast",
+                direction: 135,
+                left: 0,
+                // interact with cursor movement
+                keep: true,
+            });
+            // To change the color of text randomly
+            var colors = [
+            "#F9F9F9",
+            "#FFE0AC",
+            "#FFACB7",
+            "#FCFFA6",
+            "#FFEDED",
+            ];
+            var random_color = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector(".contents").style.color = random_color;
+        </script>
+    </body>
+</html>

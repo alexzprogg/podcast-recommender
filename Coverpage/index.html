@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Podcast Project — Computer Science Solution Cover Page</title>
+  <title>Podcast Project Cover Page</title>
   <style>
     :root{
       --bg: #0b1020;
@@ -22,7 +22,7 @@
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
       background: radial-gradient(1200px 800px at 10% -10%, #152046 0%, #0b1020 60%) fixed, var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -30,155 +30,43 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .wrap {
-      max-width: 960px;
-      margin: 48px auto;
-      padding: 0 16px 64px;
-    }
+    .wrap { max-width: 960px; margin: 48px auto; padding: 0 16px 64px; }
+    .title { margin-bottom: 24px; text-align: center; }
+    .title h1 { margin: 0; font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 800; }
 
-    .title {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .title h1 {
-      margin: 0;
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-    .subtitle { color: var(--subtext); font-size: 0.95rem; }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)) , var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
-    }
-
-    .section {
-      padding: 20px 20px 16px;
-      border-top: 1px solid var(--border);
-    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .section { padding: 20px; border-top: 1px solid var(--border); }
     .section:first-child { border-top: none; }
-    .section h2 {
-      margin: 0 0 12px;
-      font-size: 1.1rem;
-      letter-spacing: 0.3px;
-    }
+    .section h2 { margin: 0 0 12px; font-size: 1.1rem; }
 
-    /* Details block */
-    .details {
-      display: grid;
-      gap: 10px 16px;
-      grid-template-columns: minmax(180px, 220px) 1fr;
-      align-items: start;
-    }
+    .details { display: grid; gap: 10px 16px; grid-template-columns: minmax(180px, 220px) 1fr; }
     .label { color: var(--subtext); }
-    .value { color: var(--text); font-weight: 600; }
+    .value { font-weight: 600; }
 
-    /* Video */
-    .video {
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      background: #000;
-      border: 1px solid var(--border);
-    }
-    .video iframe {
-      display: block;
-      width: 100%;
-      height: clamp(240px, 48vw, 460px);
-      border: 0;
-    }
+    .video { border-radius: var(--radius-sm); overflow: hidden; background: #000; border: 1px solid var(--border); }
+    .video iframe { width: 100%; height: clamp(240px, 48vw, 460px); border: 0; }
 
-    /* Doc list */
-    .doc-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .doc-item a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--muted);
-      transition: transform .08s ease, background .2s ease;
-    }
-    .doc-item a:hover {
-      transform: translateY(-1px);
-      text-decoration: none;
-      background: #202b52;
-    }
-    .doc-item .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(126, 224, 162, 0.15);
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      border: 1px solid rgba(126, 224, 162, 0.35);
-    }
-    .doc-item .name { font-weight: 600; }
-    .doc-item .hint { color: var(--subtext); font-size: 0.9rem; }
+    .doc-list { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
+    .doc-item a { display: flex; gap: 10px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--muted); transition: transform .08s, background .2s; }
+    .doc-item a:hover { transform: translateY(-1px); background: #202b52; }
+    .tag { padding: 2px 8px; border-radius: 999px; background: rgba(126, 224, 162, 0.15); color: var(--accent-2); font-size: 12px; font-weight: 700; border: 1px solid rgba(126, 224, 162, 0.35); }
+    .name { font-weight: 600; }
+    .hint { color: var(--subtext); font-size: 0.9rem; }
 
-    /* Footer note */
-    .foot {
-      color: var(--subtext);
-      font-size: 0.9rem;
-      text-align: center;
-      margin-top: 20px;
-    }
+    .btn { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--muted); font-weight: 600; text-decoration: none; }
+    .btn:hover { background: #202b52; }
 
-    /* Buttons row (optional) */
-    .row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--muted);
-      color: var(--text);
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s ease, transform .08s ease;
-    }
-    .btn:hover { background: #202b52; transform: translateY(-1px); }
-
-    @media (min-width: 720px) {
-      .grid { grid-template-columns: 1.1fr 1fr; }
-    }
+    .foot { color: var(--subtext); font-size: 0.9rem; text-align: center; margin-top: 20px; }
+    @media (min-width: 720px) { .details { grid-template-columns: 200px 1fr; } }
   </style>
 </head>
 <body>
   <main class="wrap">
     <header class="title">
-      <h1>Podcast Project — Computer Science Solution Cover Page</h1>
-      <div class="subtitle">Hosted via GitHub Pages • All documents and the demo video are accessible below</div>
+      <h1>Podcast Project Cover Page</h1>
     </header>
 
     <section class="card">
-      <!-- Details -->
       <div class="section">
         <h2>Candidate Details</h2>
         <div class="details">
@@ -190,7 +78,6 @@
         </div>
       </div>
 
-      <!-- Video -->
       <div class="section">
         <h2>Functionality Demo</h2>
         <div class="video">
@@ -203,72 +90,25 @@
         </div>
       </div>
 
-      <!-- Documentation -->
       <div class="section">
         <h2>Documentation</h2>
         <ul class="doc-list">
-          <li class="doc-item">
-            <a href="../Documentation/Criterion%20A.pdf">
-              <span class="tag">A</span>
-              <span class="name">Planning</span>
-              <span class="hint">Criterion A</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Alex-Criterion%20B.pdf">
-              <span class="tag">B</span>
-              <span class="name">Design</span>
-              <span class="hint">Alex-Criterion B</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Criterion%20B_%20Record%20of%20Tasks.pdf">
-              <span class="tag">B</span>
-              <span class="name">Record of Tasks</span>
-              <span class="hint">Criterion B — Record of Tasks</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Criteria%20C.pdf">
-              <span class="tag">C</span>
-              <span class="name">Development</span>
-              <span class="hint">Criteria C</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Criterion%20E_%20Evaluation.pdf">
-              <span class="tag">E</span>
-              <span class="name">Evaluation</span>
-              <span class="hint">Criterion E</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Appendix%20-%20Client%20Interaction.pdf">
-              <span class="tag">Appx</span>
-              <span class="name">Appendix — Client Interaction</span>
-              <span class="hint">Supplementary</span>
-            </a>
-          </li>
-          <li class="doc-item">
-            <a href="../Documentation/Appendix%20-%20Code.pdf">
-              <span class="tag">Appx</span>
-              <span class="name">Appendix — Code</span>
-              <span class="hint">Supplementary</span>
-            </a>
-          </li>
+          <li class="doc-item"><a href="../Documentation/Criterion%20A.pdf"><span class="tag">A</span><span class="name">Planning</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Alex-Criterion%20B.pdf"><span class="tag">B</span><span class="name">Design</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Criterion%20B_%20Record%20of%20Tasks.pdf"><span class="tag">B</span><span class="name">Record of Tasks</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Criteria%20C.pdf"><span class="tag">C</span><span class="name">Development</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Criterion%20E_%20Evaluation.pdf"><span class="tag">E</span><span class="name">Evaluation</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Appendix%20-%20Client%20Interaction.pdf"><span class="tag">Appx</span><span class="name">Appendix — Client Interaction</span></a></li>
+          <li class="doc-item"><a href="../Documentation/Appendix%20-%20Code.pdf"><span class="tag">Appx</span><span class="name">Appendix — Code</span></a></li>
         </ul>
       </div>
 
-      <!-- Helpful actions -->
       <div class="section">
-        <div class="row">
-          <a class="btn" href="https://alexzprogg.github.io/podcast-recommender/" aria-label="Go to project site home">🏠 Back to Site Home</a>
-          <a class="btn" href="https://github.com/alexzprogg/podcast-recommender" target="_blank" rel="noopener" aria-label="View repository on GitHub">📦 View on GitHub</a>
-        </div>
+        <a class="btn" href="https://github.com/alexzprogg/podcast-recommender" target="_blank" rel="noopener">📦 View on GitHub</a>
       </div>
 
       <div class="section foot">
-        <div>© 1937 • This page is optimized for desktop and mobile. If a link doesn’t open, check that filenames and letter case match exactly.</div>
+        <div>© 1937 • Optimized for desktop and mobile. Ensure file names & cases match exactly if a link doesn’t open.</div>
       </div>
     </section>
   </main>
